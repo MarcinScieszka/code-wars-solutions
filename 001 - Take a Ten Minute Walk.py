@@ -1,4 +1,6 @@
 """
+"Take a Ten Minute Walk"
+
 You live in the city of Cartesia where all roads are laid out in a perfect grid. 
 You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk. 
 The city provides its citizens with a Walk Generating App on their phones -
@@ -14,13 +16,26 @@ It will never give you an empty array (that's not a walk, that's standing still!
 
 
 #determine if walk is valid
-def is_valid_walk(walk):
-    passed_minutes = 0
+def is_valid_walk_0(walk):
+    if len(walk) != 10:
+        # walk is shorter/longer than 10 minutes
+        return False
 
-    if passed_minutes != 10:
-        correct_time = False
+    x_coordinate = 0
+    y_coordinate = 0
 
-    if correct_time and correct_position:
+    for direction in walk:
+        if direction == 'n':
+            x_coordinate += 1
+        elif direction == 's':
+            x_coordinate -= 1
+        elif direction == 'w':
+            y_coordinate += 1
+        elif direction == 'e':
+            y_coordinate -= 1
+
+    if (not x_coordinate) and (not y_coordinate):
+        # x and y are in the original position
         return True
     else:
         return False
