@@ -15,4 +15,12 @@ It will never give you an empty array (that's not a walk, that's standing still!
 
 #determine if walk is valid
 def is_valid_walk(walk):
-    pass
+    passed_minutes = 0
+
+    if passed_minutes != 10:
+        correct_time = False
+
+    if correct_time and correct_position:
+        return True
+    else:
+        return False
