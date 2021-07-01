@@ -39,3 +39,10 @@ def is_valid_walk_0(walk):
         return True
     else:
         return False
+
+def is_valid_walk_1(walk):
+    # correct, when walk is 10 minutes long and nr of north-south and west-east directions are equal
+    if len(walk) == 10 and walk.count('n') == walk.count('s') and walk.count('w') == walk.count('e'):
+        return True
+    else:
+        return False
