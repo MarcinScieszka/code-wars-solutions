@@ -23,6 +23,25 @@ anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', '
 anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
 """
 
+from collections import Counter
 
-def anagrams(word, words):
-    pass
+def anagrams_0(word, words):
+    out = []
+
+    # couting occurences of letters in original word
+    counted_letters = dict(Counter(word))
+
+    for curr_word in words:
+        # couting occurencces of letters in each word that is compared
+        counted_letters_curr_word = dict(Counter(curr_word))
+
+        if counted_letters == counted_letters_curr_word:
+            out.append(curr_word)
+    
+    return out
+
+def anagrams_1(word, words):
+    # shorter representation of function above
+    counted_letters = Counter(word)
+
+    return [curr_word for curr_word in words if Counter(curr_word) == counted_letters]
