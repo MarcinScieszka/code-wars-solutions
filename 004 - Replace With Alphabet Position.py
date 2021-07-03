@@ -21,8 +21,9 @@ def alphabet_position(text):
 
     output_string = ''
     for character in text:
-        if character.lower() in repacements:
-            # lower() used to account for upper letters
-            output_string += ' ' + str(repacements[character.lower()]) 
+        character = character.lower() # lower() used to account for upper letters
+        
+        if character in repacements:
+            output_string += ' ' + str(repacements[character]) 
     
     return output_string.strip() # strip() used to remove unwanted space
