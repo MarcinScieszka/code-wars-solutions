@@ -32,5 +32,5 @@ song_decoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB")
 
 
 def song_decoder(song):
-    return ' '.join(song_word for song_word in song.split('WUB') if len(song_word) > 0)
+    return ' '.join(song_word for song_word in song.split('WUB') if song_word)
 
