@@ -30,5 +30,7 @@ song_decoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB")
   # =>  WE ARE THE CHAMPIONS MY FRIEND
 """
 
+
 def song_decoder(song):
-    return -1
+    return ' '.join(song_word for song_word in song.split('WUB') if len(song_word) > 0)
+
