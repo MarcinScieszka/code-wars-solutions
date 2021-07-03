@@ -19,16 +19,12 @@ def find_outlier(integers):
 
     # determining array type: if two values from the first three elements of integers of the integers array are even that means that whole array is mostly even
     if (res_0 == 0 and res_1 == 0) or (res_1 == 0 and res_2 == 0) or (res_0 == 0 and res_2 == 0):
-        array_type = 0 # array contains mostly even numbers
+        array_type = 1 # array contains mostly even numbers
     else:
-        array_type = 1 # array contains mostly odd numbers
+        array_type = 0 # array contains mostly odd numbers
     
     # finding outlier in integers array based on type of array:
-    if array_type:
-        for value in integers:
-            if value % 2 == 0:
-                return value
-    else:
-        for value in integers:
-            if value % 2 == 1:
-                return value
+    for value in integers:
+        if value % 2 == array_type:
+            return value
+ 
