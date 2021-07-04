@@ -12,7 +12,7 @@ Please note that using encode is considered cheating.
 def rot13(message):
     ciphered_message = ''
     for character in message:
-        t = ord(character) # ASCI representation of chars
+        t = ord(character) # ASCI representation of char
 
         # uppercase letters: A=65, ..., Z=90
         if 65 <= t <= 77:
