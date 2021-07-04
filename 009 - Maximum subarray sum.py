@@ -26,6 +26,10 @@ def max_sequence(arr):
             has_positive_value = True
         else:
             has_negative_value = True
+            
+        if has_positive_value and has_negative_value:
+            # list is made up of both positive and negative numbers
+            break
 
     if has_positive_value and not has_negative_value:
         # list is made up of only positive numbers
