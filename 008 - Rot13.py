@@ -10,4 +10,22 @@ Please note that using encode is considered cheating.
 """
 
 def rot13(message):
-    pass
+    ciphered_message = ''
+    for character in message:
+        t = ord(character) # ASCI representation of chars
+
+        # uppercase letters: A=65, ..., Z=90
+        if 65 <= t <= 77:
+            ciphered_message += chr(t+13)
+        elif 78 <= t <= 90:
+            ciphered_message += chr(((t+13) % 91) + 65)
+        # lowercase letters a=97, ..., z=122
+        elif 97 <= t <= 109:
+            ciphered_message += chr(t+13)
+        elif 110 <= t <= 122:
+            ciphered_message += chr(((t+13) % 123) + 97)
+        # other characters returned as they are
+        else:
+            ciphered_message += character
+
+    return ciphered_message
