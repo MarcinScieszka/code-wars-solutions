@@ -18,4 +18,10 @@ if n == 0, then return an empty array (except in C return NULL) and be ready for
 """
 
 def tribonacci(signature, n):
-    pass
+    if n < 3:
+        return signature[:n]
+        
+    for i in range(3, n):
+        signature.append(signature[i-3] + signature[i-2] + signature[i-1])
+
+    return signature
