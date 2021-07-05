@@ -17,11 +17,10 @@ Signature will always contain 3 numbers; n will always be a non-negative number;
 if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified ;)
 """
 
-def tribonacci(signature, n):
-    if n < 3:
-        return signature[:n]
-        
-    for i in range(3, n):
-        signature.append(signature[i-3] + signature[i-2] + signature[i-1])
 
-    return signature
+def tribonacci(signature, n):
+    if n >= 3:
+        for i in range(3, n):
+            signature.append(signature[i-3] + signature[i-2] + signature[i-1]) # signature.append(sum(signature[-3:])) seems to be slower
+
+    return signature[:n]
