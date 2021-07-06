@@ -16,12 +16,12 @@ def sort_array(source_array):
     odds = []
 
     # res replaces odd values (which are added to odds) with None and retains even values as they were in source_array 
-    res = [val if (val % 2 == 0) else odds.append(val) for val in source_array]
+    res = [val if val % 2 == 0 else odds.append(val) for val in source_array]
    
     odds.sort()
-
-    # replace None with ordered odd values
     odds_iter = iter(odds)
+    
+    # replace None with ordered odd values
     for idx, val in enumerate(res):
         if val == None:
             res[idx] = next(odds_iter)
