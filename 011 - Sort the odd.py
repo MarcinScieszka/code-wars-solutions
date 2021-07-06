@@ -11,26 +11,20 @@ Examples
 
 
 def sort_array(source_array):
-    """function sorts odd numbers from source_array in ascending order while leaving even numbers as they were"""
+    """function takes an array of numbers and sorts the odd numbers in ascending order while leaving the even numbers at their original positions"""
     
     odds = []
 
-    # res retains even values as they were in source_array and None insdead of odd values
-    # odd values added to odds as a tuple: (index, value in a given index)
-    res = [source_array[idx] if (source_array[idx] % 2 == 0) else odds.append((idx,source_array[idx])) for idx in range(len(source_array))]
+    # res replaces odd values (which are added to odds) with None and retains even values as they were in source_array 
+    res = [val if (val % 2 == 0) else odds.append(val) for val in source_array]
    
-    # sort odds by value (by second element in a tuple)
-    odds.sort(key=lambda elem: elem[1])
+    odds.sort()
 
-    # replace tuple with values only
-    sorted_odd_values = [odd_val[1] for odd_val in odds]
-
-    # add ordered odd values in a place of None values to the result array 
-    j = 0
-    for i in range(len(source_array)):
-        if res[i] == None:
-            res[i] = sorted_odd_values[j]
-            j += 1
+    # replace None with ordered odd values
+    odds_iter = iter(odds)
+    for idx, val in enumerate(res):
+        if val == None:
+            res[idx] = next(odds_iter)
 
     return res
 
