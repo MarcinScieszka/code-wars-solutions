@@ -20,5 +20,23 @@ Example: I = [15, 30, -45] 5 divides 15, 30 and (-45) so 5 appears in the result
     In Fortran - as in any other language - the returned string is not permitted to contain any redundant trailing whitespace: you can use dynamically allocated character strings.
 """
 
+
+import sympy
+
+
 def sum_for_list(lst):
-    pass
+    prime_factors = {} # key=prime_factor, val=values which contain given prime factor
+
+    # determining prime factors for each value in the lst
+    for val in lst:
+        for i in range(val//2):
+            if sympy.isprime(i) and val % i == 0:
+                prime_factors.setdefault(i,[]).append(val)
+
+    # array of arrays where values are: prime factor and sum of the numbers for which given value is a prime factor
+    result = [[key, sum(prime_factors[key])] for key in sorted(prime_factors)]
+    
+    return result
+
+
+print(sum_for_list([15, 21, 24, 30, 45]))
