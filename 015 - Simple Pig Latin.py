@@ -17,8 +17,8 @@ def pig_it(text: str) -> str:
     result = ''
     for word in text.split():
         # split text by spaces
-        if word.isalpha():
-            # all the characters are alphabet letters (a-z)
+        if word.isalnum():
+            # all the characters are alphanumerical (a-z) and (0-9)
             result += ' ' + word[1:] + word[0] + 'ay'
         else:
             # other characters are untouched
