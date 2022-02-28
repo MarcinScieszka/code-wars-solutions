@@ -27,11 +27,12 @@ Examples:
     # => ["won't", "wont"]
 """
 
+from array import array
 import re
 import string
 import unittest
 
-def top_3_words(text):
+def top_3_words(text: array) -> array:
     top_words = {}
 
     # if char is not a leter or apostrophe replace it with space
@@ -50,6 +51,14 @@ def top_3_words(text):
     
     # fill a dict with words as keys and their occurrences as vals
     for word in words:
+        # skip empty strings
+        if word == '':
+            continue
+
+        # skip words containing only apostrophes
+        if (re.match("^'+$", word)):
+            continue
+        
         # words in the result should be lowercased
         word = word.lower()
 
@@ -88,6 +97,6 @@ class TestTopWords(unittest.TestCase):
 
         # then
         self.assertEqual(top_3_words(text), ["e", "ddd", "aa"])
-
+    
 if __name__ == '__main__':
     unittest.main()
