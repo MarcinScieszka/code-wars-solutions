@@ -28,6 +28,7 @@ D 	    500
 M 	    1000
 """
 
+import unittest
 import string
 
 class RomanNumerals:
@@ -130,6 +131,20 @@ class RomanNumerals:
             
         return res
 
+class TestTopWords(unittest.TestCase):
+    def test_to_roman_sample_tests(self):
+        self.assertEqual(RomanNumerals.to_roman(1000), 'M', '1000 should == "M"')
+        self.assertEqual(RomanNumerals.to_roman(4), 'IV', '4 should == "IV"')
+        self.assertEqual(RomanNumerals.to_roman(1), 'I', '1 should == "I"')
+        self.assertEqual(RomanNumerals.to_roman(1990), 'MCMXC', '1990 should == "MCMXC"')
+        self.assertEqual(RomanNumerals.to_roman(2008), 'MMVIII', '2008 should == "MMVIII"')
 
-print(RomanNumerals.to_roman(1990))
-print(RomanNumerals.from_roman('M'))
+    def test_from_roman_sample_tests(self):
+        self.assertEqual(RomanNumerals.from_roman('I'), 1, 'I should == 1')
+        self.assertEqual(RomanNumerals.from_roman('XXI'), 21, 'XXI should == 21')
+        self.assertEqual(RomanNumerals.from_roman('IV'), 4, 'IV should == 4')
+        self.assertEqual(RomanNumerals.from_roman('MMVIII'), 2008, 'MMVIII should == 2008')
+        self.assertEqual(RomanNumerals.from_roman('MDCLXVI'), 1666, 'MDCLXVI should == 1666')
+
+if __name__ == '__main__':
+    unittest.main()
