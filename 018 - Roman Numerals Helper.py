@@ -51,7 +51,7 @@ class RomanNumerals:
             elif (hundreds == 5):
                 res += 'D'
             elif (hundreds in [6, 7, 8]):
-                res += ('D' + hundreds * 'C')
+                res += ('D' + (hundreds - 5) * 'C')
             elif (hundreds == 9):
                 res += 'CM'
         
@@ -84,8 +84,52 @@ class RomanNumerals:
         return res
 
     def from_roman(roman_num: string) -> int:
-        return 0
+        res = 0
+        previous = ''
+        for current in roman_num:
+            if (current == 'M'):
+                if (previous == 'C'):
+                    # CM = 900
+                    res += 800
+                else:
+                    res += 1000
+            elif (current == 'D'):
+                if (previous == 'C'):
+                    # CD = 400
+                    res += 300
+                else:
+                    res += 500
+            elif (current == 'C'):
+                if (previous == 'X'):
+                    # XC = 90
+                    res += 80
+                else:
+                    res += 100
+            elif (current == 'L'):
+                if (previous == 'X'):
+                    # XL = 40
+                    res += 30
+                else:
+                    res += 50
+            elif (current == 'X'):
+                if (previous == 'I'):
+                    # IX = 9
+                    res += 8
+                else:
+                    res += 10
+            elif (current == 'V'):
+                if (previous == 'I'):
+                    # IV = 4
+                    res += 3
+                else:
+                    res += 5
+            elif (current == 'I'):
+                res += 1
+
+            previous = current
+            
+        return res
 
 
 print(RomanNumerals.to_roman(1990))
-# print(RomanNumerals.from_roman('M'))
+print(RomanNumerals.from_roman('M'))
