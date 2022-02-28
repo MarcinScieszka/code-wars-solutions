@@ -29,6 +29,7 @@ Examples:
 
 import re
 import string
+import unittest
 
 def top_3_words(text):
     top_words = {}
@@ -62,8 +63,31 @@ def top_3_words(text):
 
     return list(top_three_dict.keys())
 
+class TestTopWords(unittest.TestCase):
+    def test_return_top_threee_words_from_long_text(self):
+        # given
+        text = "In a village of La Mancha, the name of which I have no desire to call to mind,      \
+            there lived not long since one of those gentlemen that keep a lance in the lance-rack,  \
+            an old buckler, a lean hack, and a greyhound for coursing. An olla of rather more       \
+            beef than mutton, a salad on most nights, scraps on Saturdays, lentils on Fridays,      \
+            and a pigeon or so extra on Sundays, made away with three-quarters of his income."
+        
+        # then
+        self.assertEqual(top_3_words(text), ["a", "of", "on"])
+            
+    def test_return_top_threee_words_from_text_with_not_allwed_chars(self):
+        # given
+        text = "  //wont won't won't"
 
-text1 = "In a village of La Mancha, the name of which I have no desire to call to mind, there lived not long since one of those gentlemen that keep a lance in the lance-rack, an old buckler, a lean hack, and a greyhound for coursing. An olla of rather more beef than mutton, a salad on most nights, scraps on Saturdays, lentils on Fridays, and a pigeon or so extra on Sundays, made away with three-quarters of his income."
-text2 = "e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e"
-text3 = "  //wont won't won't"
-print(top_3_words(text1))
+        # then
+        self.assertEqual(top_3_words(text), ["won't", "wont"])
+    
+    def test_return_top_threee_words_from_text(self):
+        # given
+        text = "e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e"
+
+        # then
+        self.assertEqual(top_3_words(text), ["e", "ddd", "aa"])
+
+if __name__ == '__main__':
+    unittest.main()
